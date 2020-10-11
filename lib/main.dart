@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_cloud/services/news_service.dart';
 
 void main() {
   runApp(NewsCloud());
@@ -10,7 +11,20 @@ class NewsCloud extends StatelessWidget {
     return MaterialApp(
       title: 'News Cloud',
       home: Scaffold(
-        body: Container(),
+        body: Center(
+          child: GestureDetector(
+            onTap: () async {
+              NewsApi newsApi = NewsApi();
+              var articles = await newsApi.fetchArticlesByCategory('sports');
+              for (var article in articles) {
+                print(article.title);
+              }
+            },
+            child: Container(
+              child: Text('fetchData'),
+            ),
+          ),
+        ),
       ),
     );
   }
