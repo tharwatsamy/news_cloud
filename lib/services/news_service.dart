@@ -13,7 +13,7 @@ class NewsApi {
       if (response.statusCode == 200) {
         String data = response.body;
         var jsonData = jsonDecode(data);
-        Articles articles = Articles.fromJson(jsonData);
+        ArticlesList articles = ArticlesList.fromJson(jsonData);
         List<Article> articlesList =
             articles.articles.map((e) => Article.fromJson(e)).toList();
         return articlesList;
@@ -32,7 +32,7 @@ class NewsApi {
       if (response.statusCode == 200) {
         String data = response.body;
         var jsonData = jsonDecode(data);
-        Articles articles = Articles.fromJson(jsonData);
+        ArticlesList articles = ArticlesList.fromJson(jsonData);
         List<Article> articlesList =
             articles.articles.map((e) => Article.fromJson(e)).toList();
         return articlesList;

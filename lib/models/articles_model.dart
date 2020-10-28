@@ -1,10 +1,10 @@
 import 'package:news_cloud/models/article_model.dart';
 
-class Articles {
+class ArticlesList {
   final List<dynamic> articles;
-  Articles({this.articles});
-  factory Articles.fromJson(Map<String, dynamic> jsonData) {
-    return Articles(
+  ArticlesList({this.articles});
+  factory ArticlesList.fromJson(Map<String, dynamic> jsonData) {
+    return ArticlesList(
       articles: jsonData['articles'],
     );
   }

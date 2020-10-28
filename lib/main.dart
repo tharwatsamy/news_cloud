@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:news_cloud/services/news_service.dart';
+import 'package:news_cloud/view_models/list_of_articles_view_model.dart';
+import 'package:news_cloud/views/home_view.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(NewsCloud());
@@ -8,23 +10,10 @@ void main() {
 class NewsCloud extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'News Cloud',
-      home: Scaffold(
-        body: Center(
-          child: GestureDetector(
-            onTap: () async {
-              NewsApi newsApi = NewsApi();
-              var articles = await newsApi.fetchArticlesByCategory('sports');
-              for (var article in articles) {
-                print(article.title);
-              }
-            },
-            child: Container(
-              child: Text('fetchData'),
-            ),
-          ),
-        ),
+    return ChangeNotifierProvider<ArticlesListViewModel>(
+      create: (context) => ArticlesListViewModel(),
+      child: MaterialApp(
+        home: HomeView(),
       ),
     );
   }
